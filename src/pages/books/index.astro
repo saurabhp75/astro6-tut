@@ -1,9 +1,42 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+interface Book {
+    title: string;
+    author: string;
+}
+
+const books: Book[] = [
+    { title: "The Name of The Wind", author: "Patrick Rothfuss" },
+    { title: "The Final Empire", author: "Brandon Sanderson" },
+    { title: "The Blade Itself", author: "Joe Abercrombie" },
+    { title: "The Will of the Many", author: "James Islington" },
+];
+
+// const books: Book[] = []
 ---
 
 <BaseLayout>
-    <div class="content">
-        <h2>Books</h2>
+    <div class="space-y-6">
+        <h2 class="text-3xl font-bold tracking-tight text-white">Books</h2>
+        {
+            books.map((book) => (
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-lg shadow-slate-950/20 backdrop-blur transition hover:border-sky-400/40 hover:bg-white/10">
+                    <p class="text-xl font-semibold text-white">{book.title}</p>
+                    <p class="mt-2 text-sm text-slate-300">by {book.author}</p>
+                    <a
+                        class="mt-4 inline-flex text-sm font-medium text-sky-300 transition hover:text-sky-200"
+                        href=""
+                    >
+                        Read Review
+                    </a>
+                </div>
+            ))
+        }
+        {
+            !books.length && (
+                <p class="text-sm text-slate-400">No books to show.</p>
+            )
+        }
     </div>
 </BaseLayout>
