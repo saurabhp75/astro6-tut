@@ -18,7 +18,7 @@ const { book } = Astro.props;
     <p class="mt-2 text-sm text-slate-300">{book.data.summary}</p>
     <a
         class="mt-4 inline-flex text-sm font-medium text-sky-300 transition hover:text-sky-200"
-        href=""
+        href={`/books/${book.id}`}
     >
         Read Review
     </a>
