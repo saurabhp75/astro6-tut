@@ -1,0 +1,19 @@
+---
+export const prerender = false;
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+interface Product {
+    title: string;
+}
+
+const response = await fetch("https://dummyjson.com/products");
+const json = await response.json();
+const products: Product[] = json.products;
+---
+
+<BaseLayout>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {products.map((product) => <div class="rounded-2xl border border-white/10 bg-white/5 p-5 text-base font-medium text-slate-100 shadow-lg shadow-slate-950/20 backdrop-blur transition hover:border-sky-400/40 hover:bg-white/10">{product.title}</div>)}
+    </div>
+</BaseLayout>
