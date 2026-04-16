@@ -1,0 +1,23 @@
+---
+interface Props {
+    book: {
+        title: string;
+        author: string;
+    };
+}
+
+const { book } = Astro.props;
+---
+
+<div
+    class="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-lg shadow-slate-950/20 backdrop-blur transition hover:border-sky-400/40 hover:bg-white/10"
+>
+    <p class="text-xl font-semibold text-white">{book.title}</p>
+    <p class="mt-2 text-sm text-slate-300">by {book.author}</p>
+    <a
+        class="mt-4 inline-flex text-sm font-medium text-sky-300 transition hover:text-sky-200"
+        href=""
+    >
+        Read Review
+    </a>
+</div>
